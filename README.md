@@ -14,28 +14,29 @@ Grounded business insights
 
 Read-only and validated SQL execution
 
-🔗 Live Demo:
+🌐 Live Demo
+
 https://ai-data-analyst-copilot-9dmnh4izbccbpgpuyur8e2.streamlit.app
 
 📸 Application Screenshots
 
-1. Application Overview
+Application Overview
 
 
 
-2. AI Business Insights
+AI Business Insights
 
 
 
-3. Automated Visualization
+Automated Visualization
 
 
 
-4. Query Result Data
+Query Result Data
 
 
 
-5. Generated SQL Query
+Generated SQL Query
 
 
 
@@ -59,17 +60,17 @@ This project demonstrates how an AI-assisted analytics workflow can combine thes
 
 A user can simply ask:
 
-"Which product categories generate the highest merchandise sales?"
+Which product categories generate the highest merchandise sales?
 
-and the Copilot automatically generates SQL, validates it, queries the database, creates a chart and explains the result.
+The Copilot then generates SQL, validates it, queries the database, creates a visualization and explains the result.
 
 ⚡ Business Value
 
 Self-Service Analytics — users can explore data using natural-language questions instead of manually writing SQL.
 
-Faster Data Exploration — SQL generation, query execution, visualization and first-level interpretation happen in one workflow.
+Faster Data Exploration — SQL generation, execution, visualization and first-level interpretation happen in one workflow.
 
-Automated Decision Support — query outputs are converted into readable visualizations and concise business insights.
+Automated Decision Support — results are converted into readable visualizations and concise business insights.
 
 Consistent Metrics — a semantic layer defines important business concepts such as merchandise sales, unique customers and delivery performance.
 
@@ -108,30 +109,20 @@ The analytical warehouse contains customer, product, seller and date dimensions 
 🤖 How It Works
 
 flowchart TD
-    A[Business Question in Plain English]
-    B[Database Schema + Semantic Layer]
-    C[Gemini / Groq LLM]
-    D[PostgreSQL Query Generation]
-    E[SQL Safety Validator]
-    F[Supabase PostgreSQL - Read Only]
-    G[Query Result DataFrame]
-    H[Automatic Visualization]
-    I[Grounded AI Business Insights]
-
-    A --> B
-    B --> C
-    C --> D
-    D --> E
-    E --> F
-    F --> G
-    G --> H
-    G --> I
+    A[Business Question in Plain English] --> B[Database Schema + Semantic Layer]
+    B --> C[Gemini / Groq LLM]
+    C --> D[PostgreSQL Query Generation]
+    D --> E[SQL Safety Validator]
+    E --> F[Supabase PostgreSQL - Read Only]
+    F --> G[Query Result DataFrame]
+    G --> H[Automatic Visualization]
+    G --> I[Grounded AI Business Insights]
 
 🧠 Schema-Aware SQL Generation
 
 The Copilot receives context about:
 
-Tables and columns
+Available tables and columns
 
 Primary and foreign-key relationships
 
@@ -149,11 +140,11 @@ The semantic layer defines important analytical concepts.
 
 Merchandise Sales
 
-For order-level analysis:
+Order-level analysis:
 
 SUM(fact_orders.merchandise_value)
 
-For product/category/seller analysis:
+Product/category/seller analysis:
 
 SUM(fact_order_items.price)
 
@@ -167,15 +158,17 @@ instead of treating every customer_id as a separate real-world customer.
 
 Payment Analysis
 
-fact_payments is payment-grain data, so:
+fact_payments is payment-grain data.
+
+For order counts:
 
 COUNT(DISTINCT order_id)
 
-is used when counting orders.
+is used instead of counting payment records.
 
 🔒 SQL Safety Layer
 
-The application allows read-only analytical SQL such as:
+The application permits read-only analytical SQL such as:
 
 SELECT
 WITH
@@ -244,7 +237,7 @@ Visualizations are created using Plotly.
 
 AI-generated insights are based on the actual SQL result returned by the database.
 
-The insight layer is instructed not to invent causes, campaigns, seasonality, strategies or external events unless supported by the query result.
+The insight layer is instructed not to invent causes, campaigns, seasonality, strategies or external events unless supported by the returned data.
 
 💬 Example Questions
 
@@ -396,11 +389,16 @@ ai-data-analyst-copilot/
 │   ├── test_sql_validator.py
 │   └── test_visualizer.py
 │
+├── images/
+│   ├── app_overview.png
+│   ├── ai_insights.png
+│   ├── automated_visualization.png
+│   ├── query_result_data.png
+│   └── generated_sql_query.png
+│
 ├── prompts/
 ├── config/
-├── images/
 ├── documentation/
-│
 ├── .env.example
 ├── .gitignore
 ├── requirements.txt
@@ -453,47 +451,35 @@ streamlit run app/app.py
 
 🔐 Secrets Management
 
-Local development uses:
+Local development uses .env.
 
-.env
-
-Production deployment uses:
-
-Streamlit Secrets
+Production deployment uses Streamlit Secrets.
 
 The repository contains only placeholder configuration through .env.example.
 
 🎯 What This Project Demonstrates
 
-SQL
+SQL and PostgreSQL
 
-PostgreSQL
-
-Data modeling
-
-Dimensional modeling
+Data modeling and dimensional modeling
 
 Business metric definition
 
 Natural-language analytics
 
-Generative AI
+Generative AI and prompt engineering
 
-Prompt engineering
-
-SQL validation
-
-Database security
+SQL validation and database security
 
 Data visualization
 
-Cloud databases
+Cloud database deployment
 
-Application deployment
+Streamlit application deployment
 
 Automated testing
 
-Monitoring
+Availability monitoring
 
 Rather than acting as a simple chatbot, the application integrates AI into a controlled analytical workflow connected to a real relational data warehouse.
 
