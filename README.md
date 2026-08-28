@@ -17,9 +17,43 @@ Read-only and validated SQL execution
 🔗 Live Demo:
 https://ai-data-analyst-copilot-9dmnh4izbccbpgpuyur8e2.streamlit.app
 
+📸 Application Screenshots
+
+1. Application Overview
+
+
+
+2. AI Business Insights
+
+
+
+3. Automated Visualization
+
+
+
+4. Query Result Data
+
+
+
+5. Generated SQL Query
+
+
+
 💼 Why This Project?
 
-Business teams frequently need quick answers from their data, but answering even simple questions may require understanding the database structure, writing SQL, validating the query, extracting the data, building a visualization and interpreting the result.
+Business teams frequently need quick answers from their data, but answering even simple questions may require:
+
+Understanding the database structure
+
+Writing SQL
+
+Validating the query
+
+Extracting the data
+
+Building a visualization
+
+Interpreting the result
 
 This project demonstrates how an AI-assisted analytics workflow can combine these steps into one interactive application.
 
@@ -125,11 +159,19 @@ SUM(fact_order_items.price)
 
 Unique Customers
 
-The system uses customer_unique_id instead of treating every customer_id as a separate real-world customer.
+The system uses:
+
+customer_unique_id
+
+instead of treating every customer_id as a separate real-world customer.
 
 Payment Analysis
 
-fact_payments is payment-grain data, so COUNT(DISTINCT order_id) is used when counting orders.
+fact_payments is payment-grain data, so:
+
+COUNT(DISTINCT order_id)
+
+is used when counting orders.
 
 🔒 SQL Safety Layer
 
@@ -170,7 +212,11 @@ INSERT  ❌
 UPDATE  ❌
 DELETE  ❌
 
-The role also uses default_transaction_read_only = ON.
+The role also uses:
+
+default_transaction_read_only = ON
+
+This provides an additional database-level safety layer.
 
 ⏱️ Query Guardrails
 
@@ -407,7 +453,15 @@ streamlit run app/app.py
 
 🔐 Secrets Management
 
-Local development uses .env while production deployment uses Streamlit Secrets. The repository contains only placeholder configuration through .env.example.
+Local development uses:
+
+.env
+
+Production deployment uses:
+
+Streamlit Secrets
+
+The repository contains only placeholder configuration through .env.example.
 
 🎯 What This Project Demonstrates
 
